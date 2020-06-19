@@ -18,11 +18,11 @@ class Bandit:
             
 def start_game():
             
-    win_rates = [1,2,3]
+    stand_means = [1,2,3]
     total_samples = 10000
     Eps = 0.1
         
-    bandits = [Bandit(i) for i in win_rates]
+    bandits = [Bandit(i) for i in stand_means]
     
     reward_log = [0]*total_samples
     
@@ -46,15 +46,15 @@ def start_game():
         bandits[number].update_mean(value)
             
     print([b.mean for b in bandits])
-    plot(reward_log,total_samples,win_rates)
+    plot(reward_log,total_samples,stand_means)
 
-def plot(reward_log,total_samples,win_rates):
+def plot(reward_log,total_samples,stand_means):
     cumulative_rewards = np.cumsum(reward_log)
     cumulative_average = cumulative_rewards / (np.arange(total_samples) + 1)
     plt.plot(cumulative_average)
-    plt.plot(np.ones(total_samples)*win_rates[0])
-    plt.plot(np.ones(total_samples)*win_rates[1])
-    plt.plot(np.ones(total_samples)*win_rates[2])
+    plt.plot(np.ones(total_samples)*stand_means[0])
+    plt.plot(np.ones(total_samples)*stand_means[1])
+    plt.plot(np.ones(total_samples)*stand_means[2])
     plt.xscale('log')
     plt.savefig('greedy.png')
             
