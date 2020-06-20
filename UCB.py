@@ -56,15 +56,15 @@ def start_game():
 def plot(reward_log,total_samples,stand_means):
     cumulative_rewards = np.cumsum(reward_log)
     cumulative_average = cumulative_rewards / (np.arange(total_samples) + 1)
-    average = st()
+    #average = st()
     plt.plot(cumulative_average,label='UCB')
-    plt.plot(average,label='eps = 0.1')
+    #plt.plot(average,label='eps = 0.1')
     plt.plot(np.ones(total_samples)*stand_means[0])
     plt.plot(np.ones(total_samples)*stand_means[1])
     plt.plot(np.ones(total_samples)*stand_means[2])
     plt.xscale('log')
     plt.legend()
-    plt.savefig('OIV_vs_Greedy#.png')
+    plt.savefig('UCB.png')
     
       # linear plot
 #    plt.plot(average, label='eps = 0.1')
