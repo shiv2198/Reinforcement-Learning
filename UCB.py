@@ -8,7 +8,7 @@ class Bandit:
     
     def __init__(self,v):
         self.v = v
-        self.mean = 10
+        self.mean = 0
         self.collected_samples = 0
         
     def pull_arm(self):
